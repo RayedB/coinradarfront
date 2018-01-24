@@ -4,7 +4,7 @@
     <form :model="form">
       <input type="text" placeholder="email" name="email" v-model="form.email"/>
       <input type="password" placeholder="password" name="password" v-model="form.password"/>
-      <input type="submit" value="Login" @click.stop="onSubmit"/>
+      <input type="submit" value="Login" @click.prevent="onSubmit"/>
     </form>
 </div>
 </template>

@@ -8,9 +8,9 @@ const state = {
 };
 
 const getters = {
-  getEmail: state => state.email,
-  getToken: state => state.token,
-  isLogged: state => state.logged,
+  getEmail: state.email,
+  getToken: state.token,
+  isLogged: state.logged,
 };
 
 const actions = {
@@ -24,11 +24,11 @@ const actions = {
   },
   registerUser(context, { email, password, passwordConfirmation }) {
     if (password === passwordConfirmation) {
-      return api.post('register/user', { email, password })
+      return api.post('register/user', { email, password });
     }
   },
   registerCompany(context, { name, user }) {
-    return api.post('register/company', { name, user })
+    return api.post('register/company', { name, user });
   },
 };
 
