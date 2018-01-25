@@ -22,14 +22,10 @@ const actions = {
         context.commit('setUser', { email, token });
       });
   },
-  registerUser(context, { email, password, passwordConfirmation }) {
-    if (password === passwordConfirmation) {
-      return api.post('register/user', { email, password });
-    }
-    return api.get('register/user', { email, password });
-  },
-  registerCompany(context, { name, user }) {
-    return api.post('register/company', { name, user });
+  registerUser(context, { email, password }) {
+    return api.post('register/', { email, password });
+
+  //  return api.get('register/', { email, password });
   },
 };
 

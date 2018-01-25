@@ -1,10 +1,11 @@
 <template>
 <div class="register">
-    <h1>Login</h1>
+    <h1>Register</h1>
     <form :model="form">
-      <input type="text" placeholder="email" name="email" v.model="form.email"/>
+      <input type="text" placeholder="email" name="email" v-model="form.email"/>
       <input type="password" placeholder="password" name="password" v-model="form.password" />
-      <input type="submit" value="Login" @click="onSubmit"/>
+      <input type="password" placeholder="confirmation" name="confirmation" v-model="form.passwordConfirmation" />
+      <input type="submit" value="Register" @click.prevent="onSubmit"/>
     </form>
 </div>
 </template>
@@ -39,9 +40,7 @@ export default {
     },
     onSubmit() {
       if (this.password === this.passwordConfirmation) {
-        //let company = {name: this.form.name, user: this.form.email}
-        this.registerCompany(company)
-        .then(() => this.registerUser({email: this.form.email, password: this.form.password, passwordConfirmation: this.form.passwordConfirmation}))
+        this.registerUser({ email: this.form.email, password: this.form.password })
         .then(() => this.loginUser({email: this.form.email, password: this.form.password}))
         .then(() => this.$router.push('/'))
         .catch(err => console.log(err)) // TODO afficher err
