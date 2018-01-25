@@ -8,9 +8,9 @@ const state = {
 };
 
 const getters = {
-  getEmail: state.email,
-  getToken: state.token,
-  isLogged: state.logged,
+  getEmail: state => state.email,
+  getToken: state => state.token,
+  isLogged: state => state.logged,
 };
 
 const actions = {
@@ -26,6 +26,7 @@ const actions = {
     if (password === passwordConfirmation) {
       return api.post('register/user', { email, password });
     }
+    return api.get('register/user', { email, password });
   },
   registerCompany(context, { name, user }) {
     return api.post('register/company', { name, user });
@@ -36,9 +37,6 @@ const mutations = {
   setUser(state, { email, company, admin, superAdmin, token }) {
     state.email = email;
     state.logged = true;
-    state.company = company;
-    state.admin = admin;
-    state.superAdmin = superAdmin;
     state.token = token;
   },
 };
